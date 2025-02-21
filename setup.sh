@@ -12,6 +12,9 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.
 unzip ngrok.zip
 ./ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
 
+# Descargar el mundo Venesuela_chamo.wld
+wget https://github.com/Iceheop/terraria-server/blob/main/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld -O /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld
+
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
