@@ -10,7 +10,7 @@ git clone https://github.com/tu_usuario/tu_repositorio.git /content/terraria-ser
 # Descargar y configurar Ngrok para el túnel
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /content/ngrok.zip
 unzip /content/ngrok.zip -d /content
-/content/ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
+/content/ngrok authtoken 2tMhLL2jNo19p4V5BElz3VD4rCY_3Qga6TALLho6TNWSzVkGr
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer
