@@ -7,24 +7,32 @@ apt-get install -y wget unzip git
 # Clonar el repositorio de GitHub
 git clone https://github.com/tu_usuario/tu_repositorio.git /content/terraria-server
 
-# Configurar Ngrok para el túnel
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.zip
-unzip ngrok.zip
-./ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
+# Descargar y configurar Ngrok para el túnel
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /content/terraria-server/ngrok.zip
+unzip /content/terraria-server/ngrok.zip -d /content/terraria-server
+/content/terraria-server/ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
 
 # Descargar el mundo Venesuela_chamo.wld
-wget https://github.com/Iceheop/terraria-server/blob/main/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld -O /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld
+wget https://github.com/Iceheop/terraria-server/raw/main/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld -O /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld
+
+# Verificar si el mundo se descargó correctamente
+if [ -f /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld ]; then
+    echo "El mundo se descargó correctamente."
+else
+    echo "Error: El mundo no se descargó correctamente."
+    exit 1
+fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 
-# Iniciar el servidor de Terraria
+# Iniciar el servidor de Terraria con el mundo descargado
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -config serverconfig.txt &
+./TerrariaServer -world /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld -config serverconfig.txt &
 
 # Exponer el puerto del servidor con Ngrok y obtener la URL pública
-./ngrok tcp 7777 &
+/content/terraria-server/ngrok tcp 7777 &
 
 # Esperar unos segundos para que Ngrok se inicie y obtener la URL pública
 sleep 5
