@@ -18,7 +18,7 @@ cd /content/terraria-server/1436/Linux
 ./TerrariaServer -config serverconfig.txt
 
 # Iniciar el túnel Ngrok para el puerto 7777
-./ngrok tcp 7777 &
+./ngrok tcp 7777 --region eu &
 
 # Esperar unos segundos para que Ngrok establezca el túnel
 sleep 5 
