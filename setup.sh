@@ -12,24 +12,13 @@ wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /conte
 unzip /content/ngrok.zip -d /content
 /content/ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
 
-# Descargar el mundo Venesuela_chamo.wld
-wget https://github.com/Iceheop/terraria-server/raw/main/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld -O /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld
-
-# Verificar si el mundo se descargó correctamente
-if [ -f /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld ]; then
-    echo "El mundo se descargó correctamente."
-else
-    echo "Error: El mundo no se descargó correctamente."
-    exit 1
-fi
-
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 
-# Iniciar el servidor de Terraria con el mundo descargado
+# Iniciar el servidor de Terraria y crear un mundo por defecto
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -world /content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld &
+./TerrariaServer -autocreate 3 -world /content/terraria-server/1436/Linux/Terraria/Worlds/default.wld -config serverconfig.txt &
 
 # Exponer el puerto del servidor con Ngrok y obtener la URL pública
 /content/ngrok tcp 7777 &
