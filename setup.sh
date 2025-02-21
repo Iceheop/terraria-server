@@ -18,13 +18,17 @@ chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 
 # Iniciar el servidor de Terraria y crear un mundo por defecto
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -autocreate 3 -world /content/terraria-server/1436/Linux/Terraria/Worlds/default.wld -config serverconfig.txt &
+./TerrariaServer -autocreate 3 -world /content/terraria-server/1436/Linux/Terraria/Worlds/default.wld -config /content/terraria-server/1436/Linux/serverconfig.txt &
 
 # Exponer el puerto del servidor con Ngrok y obtener la URL pública
 /content/ngrok tcp 7777 &
 
 # Esperar unos segundos para que Ngrok se inicie y obtener la URL pública
-sleep 5
-NGROK_URL=$(curl -s http://localhost:4040/api/tunnels | grep -o '"public_url":"tcp:[^"]*' | sed 's/"public_url":"tcp:\/\///')
+sleep 15
+NGROK_URL=$(curl -s http://localhost:4040/api/tunnels | grep -o '"public_url":"tcp:[^"]*' | sed 's/"public_url":"tcp:\/\///' | sed 's/[^.]*.ngrok.io:tcp://"')
 
-echo "Tu servidor de Terraria está disponible en la URL pública: $NGROK_URL"
+if [ -z "$NGROK_URL" ]; then
+    echo "Error: No se pudo obtener la URL pública de Ngrok."
+else
+    echo "Tu servidor de Terraria está disponible en la URL pública: $NGROK_URL"
+fi
