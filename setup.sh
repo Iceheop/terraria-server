@@ -18,8 +18,7 @@ chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 
 # Iniciar el servidor de Terraria y crear un mundo por defecto
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -autocreate 3 -world /content/terraria-server/1436/Linux/Terraria/Worlds/default.wld -config /content/terraria-server/1436/Linux/serverconfig.txt &
-
+./TerrariaServer -config /content/terraria-server/1436/Linux/serverconfig.txt &
 # Exponer el puerto del servidor con Ngrok y obtener la URL pública
 /content/ngrok tcp 7777 &
 
