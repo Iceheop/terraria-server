@@ -1,4 +1,3 @@
-world=/content/terraria-server/1436/Linux/Terraria/Worlds/Venesuela_chamo.wld
 worldpath=/content/terraria-server/1436/Linux/Terraria/Worlds/
 port=7777
 maxplayers=16
