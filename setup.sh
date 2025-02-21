@@ -6,8 +6,13 @@ apt-get install -y wget unzip git
 
 # Descargar y configurar Ngrok para el túnel
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /content/ngrok.zip
-unzip /content/ngrok.zip -d /content
-/content/ngrok authtoken 2tMhLL2jNo19p4V5BElz3VD4rCY_3Qga6TALLho6TNWSzVkGr
+if [ $? -eq 0 ]; then
+  unzip /content/ngrok.zip -d /content
+  /content/ngrok authtoken 2tMhLL2jNo19p4V5BElz3VD4rCY_3Qga6TALLho6TNWSzVkGr
+else
+  echo "Error: No se pudo descargar Ngrok."
+  exit 1
+fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer
@@ -16,15 +21,10 @@ chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 # Iniciar el servidor de Terraria y crear un mundo por defecto
 cd /content/terraria-server/1436/Linux
 ./TerrariaServer -config /content/terraria-server/1436/Linux/serverconfig.txt &
-# Exponer el puerto del servidor con Ngrok y obtener la URL pública
-/content/ngrok tcp 7777 &
 
-# Esperar unos segundos para que Ngrok se inicie y obtener la URL pública
-sleep 15
-NGROK_URL=$(curl -s http://localhost:4040/api/tunnels | grep -o '"public_url":"tcp:[^"]*' | sed 's/"public_url":"tcp:\/\///' | sed 's/[^.]*.ngrok.io:tcp://"')
-
-if [ -z "$NGROK_URL" ]; then
-    echo "Error: No se pudo obtener la URL pública de Ngrok."
+if [ $? -eq 0 ]; then
+  echo "El servidor de Terraria se ha iniciado correctamente."
 else
-    echo "Tu servidor de Terraria está disponible en la URL pública: $NGROK_URL"
+  echo "Error: No se pudo iniciar el servidor de Terraria."
+  exit 1
 fi
