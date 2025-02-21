@@ -4,9 +4,6 @@
 apt-get update
 apt-get install -y wget unzip git
 
-# Clonar el repositorio de GitHub
-git clone https://github.com/tu_usuario/tu_repositorio.git /content/terraria-server
-
 # Configurar Ngrok para el túnel
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.zip
 unzip ngrok.zip
