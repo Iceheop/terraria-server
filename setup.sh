@@ -10,7 +10,7 @@ unzip ngrok.zip
 chmod +x ./ngrok
 
 # Configurar el authtoken de ngrok (reemplaza <YOUR_AUTH_TOKEN> con tu token real)
-./ngrok authtoken usr_2tMKqklCG6ltxRPQb2SdWkIcpl4
+./ngrok authtoken 2tMKqeDiV4vCIvTXzej5z6mBDvs_6tYfcBSfopmd3sQ6XFqn5
 
 # Iniciar un túnel TCP en el puerto 7777 (puerto por defecto de Terraria) y guardar la salida en ngrok.log
 ./ngrok tcp 7777 --log=stdout > ngrok.log &
