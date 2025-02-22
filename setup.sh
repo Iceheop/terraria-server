@@ -14,11 +14,11 @@ chmod +x /content/terraria-server/1436/Linux/TerrariaServer
 chmod +x /content/terraria-server/1436/Linux/TerrariaServer.bin.x86_64
 # Iniciar el servidor de Terraria
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -config serverconfig.txt &
+nohup ./TerrariaServer -config serverconfig.txt &
 # Esperar unos segundos para que el servidor se inicie
 sleep 10
 # Iniciar el túnel Ngrok para el puerto 7777
-./ngrok tcp 7777 --region eu &
+nohup ./ngrok tcp 7777 --region eu &
 # Esperar unos segundos para que Ngrok establezca el túnel
 sleep 10
 # Mostrar el estado del túnel Ngrok
