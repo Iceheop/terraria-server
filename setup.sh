@@ -13,7 +13,7 @@ mv ngrok /usr/local/bin
 
 # Verificar si el authtoken ya está configurado
 if ! grep -q "authtoken" ~/.ngrok2/ngrok.yml; then
-  /usr/local/bin/ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
+  /usr/local/bin/ngrok authtoken 2tOrlzzHbKlEnUFvfhMuMpK3nOM_3BX3Rj7aLbaVmBjxJprkD
 fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
