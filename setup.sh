@@ -3,9 +3,9 @@
 sudo apt-get update
 sudo apt-get install -y wget unzip
 
-# Descargar ngrok
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.zip
-unzip ngrok.zip
+# Descargar ngrok versión 3.6.0 o superior
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -O ngrok.tgz
+tar -xvzf ngrok.tgz
 
 chmod +x ./ngrok
 
