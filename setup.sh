@@ -4,16 +4,17 @@
 apt-get update
 apt-get install -y wget unzip git
 
+# Clonar el repositorio
+git clone https://github.com/Iceheop/terraria-server /content/terraria-server
+
 # Configurar Ngrok para el túnel
+cd /content/terraria-server
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O ngrok.zip
 unzip ngrok.zip
 
-# Mover ngrok a /usr/local/bin
-mv ngrok /usr/local/bin
-
 # Verificar si el authtoken ya está configurado
 if ! grep -q "authtoken" ~/.ngrok2/ngrok.yml; then
-  /usr/local/bin/ngrok authtoken 2tOrlzzHbKlEnUFvfhMuMpK3nOM_3BX3Rj7aLbaVmBjxJprkD
+  ./ngrok authtoken <tu_nuevo_authtoken>
 fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
@@ -27,8 +28,9 @@ nohup ./TerrariaServer -config serverconfig.txt &
 # Esperar unos segundos para que el servidor se inicie
 sleep 10
 
-# Iniciar el túnel Ngrok para el puerto 7777
-nohup /usr/local/bin/ngrok tcp 7777 --region eu &
+# Iniciar el túnel Ngrok para el puerto 7777 desde el repositorio
+cd /content/terraria-server
+nohup ./ngrok tcp 7777 --region eu &
 
 # Esperar unos segundos para que Ngrok establezca el túnel
 sleep 10
