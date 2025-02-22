@@ -13,7 +13,7 @@ mv ngrok /usr/local/bin
 
 # Verificar si el authtoken ya está configurado
 if ! grep -q "authtoken" ~/.ngrok2/ngrok.yml; then
-  ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
+  /usr/local/bin/ngrok authtoken cr_2tMKqeDiV4vCIvTXzej5z6mBDvs
 fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
@@ -28,7 +28,7 @@ nohup ./TerrariaServer -config serverconfig.txt &
 sleep 10
 
 # Iniciar el túnel Ngrok para el puerto 7777
-nohup ngrok tcp 7777 --region eu &
+nohup /usr/local/bin/ngrok tcp 7777 --region eu &
 
 # Esperar unos segundos para que Ngrok establezca el túnel
 sleep 10
