@@ -14,7 +14,7 @@ unzip ngrok.zip
 
 # Verificar si el authtoken ya está configurado
 if ! grep -q "authtoken" ~/.ngrok2/ngrok.yml; then
-  ./ngrok authtoken <tu_nuevo_authtoken>
+  ./ngrok authtoken usr_2tMKqklCG6ltxRPQb2SdWkIcpl4
 fi
 
 # Dar permisos de ejecución a los archivos TerrariaServer y TerrariaServer.bin.x86_64
