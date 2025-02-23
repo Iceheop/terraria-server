@@ -11,7 +11,7 @@ ls -l /content/terraria-server/1436/Linux/
 # Iniciar el servidor de Terraria
 echo "Iniciando el servidor de Terraria..."
 cd /content/terraria-server/1436/Linux
-./TerrariaServer -config serverconfig.txt
+./TerrariaServer -port 7777 -autocreate 2 -secure &
 
 # Mensaje final
 echo "Proceso completado."
