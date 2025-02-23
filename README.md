@@ -1,24 +1,24 @@
-# Terraria Server
+# Servidor dedicado de Terraria 
 
-Este repositorio contiene los archivos necesarios para configurar y ejecutar un servidor de Terraria.
+Este repositorio contiene los archivos necesarios para configurar y ejecutar un servidor dedicado de Terraria.
 
-## Configuración
+### **Configuración** 
 
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/tu_usuario/terraria-server.git
-   cd terraria-server
+Para el proyecto vas a nesitar crear una cuenta en **pinggy.io** y **Google colab**.
 
+### **Google Colab**
+1. Primer Bloque de codigo
 
+   ```py
+   # Conectar con google drive para guardar el cuaderno
+   from google.colab import drive
+   drive.mount('/content/drive')
+   # Clonar el repositorio de GitHub
+   !git clone https://github.com/tu_usuario/terraria-server.git /content/terraria-server
+   ```
+1. Segundo Bloque de codigo
 
-en google colab
-
-# Montar Google Drive
-from google.colab import drive
-drive.mount('/content/drive')
-
-# Clonar el repositorio de GitHub
-!git clone https://github.com/tu_usuario/terraria-server.git /content/terraria-server
-
-# Ejecutar el script setup.sh
-!bash /content/terraria-server/setup.sh
+   ```py
+   # Ejecutar el script setup.sh
+   !bash /content/terraria-server/setup.sh
+   ```
